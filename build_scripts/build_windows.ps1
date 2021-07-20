@@ -1,4 +1,5 @@
 
+
 # $env:path should contain a path to editbin.exe and signtool.exe
 
 $ErrorActionPreference = "Stop"
