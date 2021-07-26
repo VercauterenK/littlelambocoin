@@ -331,9 +331,6 @@ class HDDcoinServer:
         Tries to connect to the target node, adding one connection into the pipeline, if successful.
         An on connect method can also be specified, and this will be saved into the instance variables.
         """
-        if(int(target_node.port)!=28515):
-            self.log.warning(f"Disconnected fork of Chia in server.py {target_node.host}:{target_node.port}. Disconnected.")
-            return False
         
         
         if self.is_duplicate_or_self_connection(target_node):
