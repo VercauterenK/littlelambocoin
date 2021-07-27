@@ -312,8 +312,6 @@ class FullNodeDiscovery:
                     peer = conn.get_peer_info()
                     if peer is None:
                         continue
-                    if peer.port != 28515: 
-                        continue
                     group = peer.get_group()
                     groups.add(group)
 
