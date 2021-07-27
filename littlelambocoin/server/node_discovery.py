@@ -228,9 +228,7 @@ class FullNodeDiscovery:
     async def start_client_async(self, addr: PeerInfo, is_feeler: bool) -> None:
         try:
             
-            if(int(addr.port)!=28515):
-                # self.log.warning(f"Disconnected fork Chia in Node Discovery {addr.host}:{addr.port}.")
-                return False            
+
             if self.address_manager is None:
                 return
             self.pending_outbound_connections.add(addr.host)
