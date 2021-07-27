@@ -500,10 +500,6 @@ class FullNode:
         if self.full_node_peers is not None:
             asyncio.create_task(self.full_node_peers.on_connect(connection))
 
-       # To Ban The Other Fork Of Chia To Join In
-        if connection.peer_port != 28515:  
-            self.log.warning(f"Removing The Other Fork Of Chia {connection.peer_host} {connection.peer_port} Connection Type: {connection.connection_type}. ")
-            return None
             
         if self.initialized is False:
             return None
