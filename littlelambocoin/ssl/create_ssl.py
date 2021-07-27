@@ -66,8 +66,8 @@ def make_ca_cert(cert_path: Path, key_path: Path):
     root_key = rsa.generate_private_key(public_exponent=65537, key_size=2048, backend=default_backend())
     subject = issuer = x509.Name(
         [
-            x509.NameAttribute(NameOID.ORGANIZATION_NAME, "HDDcoin"),
-            x509.NameAttribute(NameOID.COMMON_NAME, "HDDcoin CA"),
+            x509.NameAttribute(NameOID.ORGANIZATION_NAME, "LittleLamboCoin"),
+            x509.NameAttribute(NameOID.COMMON_NAME, "LittleLamboCoin CA"),
             x509.NameAttribute(NameOID.ORGANIZATIONAL_UNIT_NAME, "Organic Farming Division"),
         ]
     )
