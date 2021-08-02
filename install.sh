@@ -120,7 +120,7 @@ python -m pip install --extra-index-url https://pypi.chia.net/simple/ miniupnpc=
 python -m pip install -e . --extra-index-url https://pypi.chia.net/simple/
 
 echo ""
-echo "HDDcoin blockchain install.sh complete."
+echo "LittleLamboCoin blockchain install.sh complete."
 echo "For assistance join us on Keybase in the #testnet chat channel:"
 echo "https://keybase.io/team/littlelambocoin_network.public"
 echo ""
