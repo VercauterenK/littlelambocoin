@@ -62,7 +62,7 @@ export default function FarmLatestBlockChallenges() {
       />
       <Typography variant="caption">
         <Trans>
-          *Want to explore HDDcoin’s blocks further? Check out{' '}
+          *Want to explore LLC blocks further? Check out{' '}
           <Link
             color="primary"
             href="https://www.littlelambocoinexplorer.com/"
