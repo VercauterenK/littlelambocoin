@@ -253,11 +253,6 @@ class HDDcoinServer:
 
             assert handshake is True
             
-            # To Ban The Other Fork Of Chia To Join In
-            if connection.peer_port != 28515:                
-                self.log.info(f"Stop communicating with other fork of chia: {connection.get_peer_info()} Connection Type: {connection.connection_type}. ")
-                await connection.close()
-                close_event.set()
             
             # Limit inbound connections to config's specifications.
             if not self.accept_inbound_connections(connection.connection_type) and not is_in_network(
