@@ -106,7 +106,7 @@ jobs:
       uses: actions/upload-artifact@v2.2.2
       with:
         name: Windows-Exe
-        path: ${{ github.workspace }}\littlelambocoin-blockchain-gui\HDDcoin-win32-x64\
+        path: ${{ github.workspace }}\littlelambocoin-blockchain-gui\LLC-win32-x64\
 
     - name: Upload Installer to artifacts
       uses: actions/upload-artifact@v2.2.2
@@ -134,14 +134,14 @@ jobs:
         LITTLELAMBOCOIN_INSTALLER_VERSION: ${{ steps.version_number.outputs.LITTLELAMBOCOIN_INSTALLER_VERSION }}
       run: |
         ls ${{ github.workspace }}\littlelambocoin-blockchain-gui\release-builds\windows-installer\
-        aws s3 cp ${{ github.workspace }}\littlelambocoin-blockchain-gui\release-builds\windows-installer\HDDcoinSetup-${{ steps.version_number.outputs.LITTLELAMBOCOIN_INSTALLER_VERSION }}.exe s3://download-littlelambocoin-net/builds/
+        aws s3 cp ${{ github.workspace }}\littlelambocoin-blockchain-gui\release-builds\windows-installer\LLCSetup-${{ steps.version_number.outputs.LITTLELAMBOCOIN_INSTALLER_VERSION }}.exe s3://download-littlelambocoin-net/builds/
 
     - name: Create Checksums
       if: startsWith(github.ref, 'refs/tags/')
       env:
         LITTLELAMBOCOIN_INSTALLER_VERSION: ${{ steps.version_number.outputs.LITTLELAMBOCOIN_INSTALLER_VERSION }}
       run: |
-         certutil.exe -hashfile ${{ github.workspace }}\littlelambocoin-blockchain-gui\release-builds\windows-installer\HDDcoinSetup-${{ steps.version_number.outputs.LITTLELAMBOCOIN_INSTALLER_VERSION }}.exe SHA256 > ${{ github.workspace }}\littlelambocoin-blockchain-gui\release-builds\windows-installer\HDDcoinSetup-${{ steps.version_number.outputs.LITTLELAMBOCOIN_INSTALLER_VERSION }}.exe.checksum
+         certutil.exe -hashfile ${{ github.workspace }}\littlelambocoin-blockchain-gui\release-builds\windows-installer\LLCSetup-${{ steps.version_number.outputs.LITTLELAMBOCOIN_INSTALLER_VERSION }}.exe SHA256 > ${{ github.workspace }}\littlelambocoin-blockchain-gui\release-builds\windows-installer\LLCSetup-${{ steps.version_number.outputs.LITTLELAMBOCOIN_INSTALLER_VERSION }}.exe.checksum
          ls ${{ github.workspace }}\littlelambocoin-blockchain-gui\release-builds\windows-installer\
 
     - name: Install py3createtorrent
@@ -152,7 +152,7 @@ jobs:
     - name: Create torrent
       if: startsWith(github.ref, 'refs/tags/')
       run: |
-        py3createtorrent -f -t udp://tracker.opentrackr.org:1337/announce ${{ github.workspace }}\littlelambocoin-blockchain-gui\release-builds\windows-installer\HDDcoinSetup-${{ steps.version_number.outputs.LITTLELAMBOCOIN_INSTALLER_VERSION }}.exe -o ${{ github.workspace }}\littlelambocoin-blockchain-gui\release-builds\windows-installer\HDDcoinSetup-${{ steps.version_number.outputs.LITTLELAMBOCOIN_INSTALLER_VERSION }}.exe.torrent --webseed https://download-littlelambocoin-net.s3.us-west-2.amazonaws.com/install/HDDcoinSetup-${{ steps.version_number.outputs.LITTLELAMBOCOIN_INSTALLER_VERSION }}.exe
+        py3createtorrent -f -t udp://tracker.opentrackr.org:1337/announce ${{ github.workspace }}\littlelambocoin-blockchain-gui\release-builds\windows-installer\LLCSetup-${{ steps.version_number.outputs.LITTLELAMBOCOIN_INSTALLER_VERSION }}.exe -o ${{ github.workspace }}\littlelambocoin-blockchain-gui\release-builds\windows-installer\LLCSetup-${{ steps.version_number.outputs.LITTLELAMBOCOIN_INSTALLER_VERSION }}.exe.torrent --webseed https://download-littlelambocoin-net.s3.us-west-2.amazonaws.com/install/LLCSetup-${{ steps.version_number.outputs.LITTLELAMBOCOIN_INSTALLER_VERSION }}.exe
         ls
 
     - name: Upload Release Files
@@ -161,9 +161,9 @@ jobs:
         AWS_ACCESS_KEY_ID: ${{ secrets.INSTALLER_UPLOAD_KEY }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.INSTALLER_UPLOAD_SECRET }}
       run: |
-        aws s3 cp ${{ github.workspace }}\littlelambocoin-blockchain-gui\release-builds\windows-installer\HDDcoinSetup-${{ steps.version_number.outputs.LITTLELAMBOCOIN_INSTALLER_VERSION }}.exe s3://download-littlelambocoin-net/install/
-        aws s3 cp ${{ github.workspace }}\littlelambocoin-blockchain-gui\release-builds\windows-installer\HDDcoinSetup-${{ steps.version_number.outputs.LITTLELAMBOCOIN_INSTALLER_VERSION }}.exe.checksum s3://download-littlelambocoin-net/install/
-        aws s3 cp ${{ github.workspace }}\littlelambocoin-blockchain-gui\release-builds\windows-installer\HDDcoinSetup-${{ steps.version_number.outputs.LITTLELAMBOCOIN_INSTALLER_VERSION }}.exe.torrent s3://download-littlelambocoin-net/torrents/
+        aws s3 cp ${{ github.workspace }}\littlelambocoin-blockchain-gui\release-builds\windows-installer\LLCSetup-${{ steps.version_number.outputs.LITTLELAMBOCOIN_INSTALLER_VERSION }}.exe s3://download-littlelambocoin-net/install/
+        aws s3 cp ${{ github.workspace }}\littlelambocoin-blockchain-gui\release-builds\windows-installer\LLCSetup-${{ steps.version_number.outputs.LITTLELAMBOCOIN_INSTALLER_VERSION }}.exe.checksum s3://download-littlelambocoin-net/install/
+        aws s3 cp ${{ github.workspace }}\littlelambocoin-blockchain-gui\release-builds\windows-installer\LLCSetup-${{ steps.version_number.outputs.LITTLELAMBOCOIN_INSTALLER_VERSION }}.exe.torrent s3://download-littlelambocoin-net/torrents/
 
     - name: Get tag name
       if: startsWith(github.ref, 'refs/tags/')
