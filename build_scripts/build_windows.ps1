@@ -44,7 +44,7 @@ if (-not (Test-Path env:LITTLELAMBOCOIN_INSTALLER_VERSION)) {
   $env:LITTLELAMBOCOIN_INSTALLER_VERSION = '0.0.0'
   Write-Output "WARNING: No environment variable LITTLELAMBOCOIN_INSTALLER_VERSION set. Using 0.0.0"
   }
-Write-Output "HDDcoin Version is: $env:LITTLELAMBOCOIN_INSTALLER_VERSION"
+Write-Output "LLC Version is: $env:LITTLELAMBOCOIN_INSTALLER_VERSION"
 Write-Output "   ---"
 
 Write-Output "   ---"
@@ -105,13 +105,13 @@ editbin.exe /STACK:8000000 daemon\littlelambocoin.exe
 Write-Output "   ---"
 
 $packageVersion = "$env:LITTLELAMBOCOIN_INSTALLER_VERSION"
-$packageName = "HDDcoin-$packageVersion"
+$packageName = "LLC-$packageVersion"
 
 Write-Output "packageName is $packageName"
 
 Write-Output "   ---"
 Write-Output "electron-packager"
-electron-packager . HDDcoin --asar.unpack="**\daemon\**" --overwrite --icon=.\src\assets\img\littlelambocoin.ico --app-version=$packageVersion
+electron-packager . LLC --asar.unpack="**\daemon\**" --overwrite --icon=.\src\assets\img\littlelambocoin.ico --app-version=$packageVersion
 Write-Output "   ---"
 
 Write-Output "   ---"
