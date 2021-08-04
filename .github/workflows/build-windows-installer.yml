@@ -112,7 +112,7 @@ jobs:
       uses: actions/upload-artifact@v2.2.2
       with:
         name: Windows-Installers
-        path: ${{ github.workspace }}\littlelambocoin-blockchain-gui\release-builds\
+        path: ${{ github.workspace }}\littlelambocoin-blockchain-gui\
 
 
     - name: Install AWS CLI
