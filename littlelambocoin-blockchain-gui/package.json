@@ -1,8 +1,8 @@
 {
   "name": "littlelambocoin-blockchain",
-  "author": "HDDcoin Network <hello@littlelambocoin.org> (https://littlelambocoin.org/)",
-  "description": "GUI for HDDcoin Blockchain",
-  "productName": "HDDcoin Blockchain",
+  "author": "LLC Network <hello@littlelambocoin.org> (https://littlelambocoin.org/)",
+  "description": "GUI for LLC Blockchain",
+  "productName": "LLC Blockchain",
   "private": true,
   "homepage": "./",
   "main": "build/electron/main.js",
