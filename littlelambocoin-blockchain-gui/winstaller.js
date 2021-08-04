@@ -14,8 +14,8 @@ function getInstallerConfig () {
   const outPath = path.join(rootPath, 'release-builds')
 
   return Promise.resolve({
-    appDirectory: path.join(rootPath, 'HDDcoin-win32-x64'),
-    authors: 'HDDcoin Network',
+    appDirectory: path.join(rootPath, 'LLC-win32-x64'),
+    authors: 'LLC Network',
     version: process.env.LITTLELAMBOCOIN_INSTALLER_VERSION,
     noMsi: true,
     iconUrl: 'https://raw.githubusercontent.com/HDDcoin-Network/littlelambocoin-blockchain/master/electron-react/src/assets/img/littlelambocoin.ico',
